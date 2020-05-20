@@ -1,13 +1,5 @@
-node('REDHAT'){
+node('REDHAT') {
     stage('scm'){
-        git 'https://github.com/wakaleo/game-of-life.git'
-    }
-    stage('Build'){
-        sh label: '', script: 'mvn package'
-    }
-    stage('postbuild'){
-        junit 'gameoflife-web/target/surefire-reports/*.xml'
-        archiveArtifacts 'gameoflife-web/target/*.war'
+        git branch: 'master', url: '=https://github.com/seshi7/game-of-life.git'
     }
 }
-
