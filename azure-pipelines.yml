@@ -1,0 +1,17 @@
+---
+trigger:
+  - master
+pool:
+  vmImage: ubuntu-latest
+  
+stages:
+  - stage: Build
+    jobs:
+      - job: 'BuildJob'
+        steps:
+          - task: Maven@3
+            inputs:
+               goals: package
+               mavenPomFile: pom.xml
+               publishJUnitResults: true
+               testResultsFiles: '**/surefire-reports/*.xml'
